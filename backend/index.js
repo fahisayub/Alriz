@@ -1,8 +1,9 @@
 const express=require('express');
 const { connectdb } = require('./config/db.config');
-const { AuthRoutes } = require('./routes/auth.routes');
-const { TodoRoutes } = require('./routes/todos.routes');
 const cors=require('cors');
+const { HomeRoutes } = require('./routes/home.routes');
+const { MasjidRoutes } = require('./routes/masjid.routes');
+const { UserRoutes } = require('./routes/user.routes');
 const PORT=process.env.PORT;
 
 const app=express();
@@ -13,8 +14,9 @@ app.get('/',async(req,res)=>{
 console.log('Home page')
 res.send('welcome to home');
 })
-app.use('/todos',TodoRoutes);
-app.use('/auth',AuthRoutes)
+app.use('/masjid',MasjidRoutes);
+app.use('/home',HomeRoutes);
+app.use('/user',UserRoutes)
 
 
 app.listen(PORT,async()=>{
